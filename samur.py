@@ -48,7 +48,7 @@ def main(args):
         objects = []
         for source in info["sources"]:
             filename, _ = os.path.splitext(source)
-            objects.append(f"{filename}.o")
+            objects.append(os.path.join(build_folder, f"{filename}.o"))
 
         for cpp, obj in zip(info["sources"], objects):
             writer.build(outputs=obj,
