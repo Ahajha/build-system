@@ -1,0 +1,3 @@
+[test01]
+kind = "executable"
+sources = ["main.cpp"]
