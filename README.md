@@ -24,6 +24,8 @@ include_dir = "include"
 sources = ["source1.cpp", "source2.cpp"]
 ```
 
+All paths are relative to the build file
+
 (Using CMake terminology for a second)
 Include directories are 'public', sources are 'private'. Header-only is an 'interface'.
 
@@ -38,3 +40,10 @@ Currently, examples can be run like so:
 python3 samur.py test/01/build.toml
 ```
 This produces the executable `test/01/build/main`.
+
+# Running tests
+
+From the top level directory:
+```
+python3 -m unittest test/unit_tests.py
+```
