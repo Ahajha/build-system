@@ -1,0 +1,6 @@
+[test02]
+kind = "executable"
+sources = [
+    "source/source1.cpp",
+    "source/source2.cpp",
+]
