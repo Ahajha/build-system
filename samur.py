@@ -32,6 +32,11 @@ def _call_ninja(args: list[str]) -> int:
     return subprocess.call([os.path.join(BIN_DIR, "ninja")] + args, close_fds=False)
 
 
+def _write_rules(writer: Writer):
+    writer.rule(name="cc", command="g++ -c $in -o $out")
+    writer.rule(name="link", command="g++ -fuse-ld=lld $in -o $out")
+
+
 def main(args):
     toml_data = toml.load(args[0])
     dirname = os.path.abspath(os.path.dirname(args[0]))
@@ -41,8 +46,7 @@ def main(args):
 
     writer = Writer(output=open(build_file, "w"))
 
-    writer.rule(name="cc", command="g++ -c $in -o $out")
-    writer.rule(name="link", command="g++ -fuse-ld=lld $in -o $out")
+    _write_rules(writer)
 
     for target, info in toml_data.items():
         objects = []
