@@ -28,6 +28,7 @@ class Target:
     # Not yet implemented, adding for future use
     public_sources: list[str]
 
+    # Absolute paths
     include_dirs: list[str]
     # Not yet implemented, adding for future use
     private_include_dirs: list[str]
@@ -65,9 +66,12 @@ class Target:
 
         # TODO public sources
 
-        self.include_dirs = \
+        include_dirs = \
             _list_or_singleton(toml_data.get("include_dir", [])) + \
             _list_or_singleton(toml_data.get("include_dirs", []))
+
+        self.include_dirs = [os.path.abspath(
+            os.path.join(base_path, dir)) for dir in include_dirs]
 
         # TODO private include dirs
 

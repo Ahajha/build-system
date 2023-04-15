@@ -1,0 +1,6 @@
+[test03]
+kind = "staticlib"
+include_dir = "include"
+sources = [
+    "source/lib.cpp",
+]

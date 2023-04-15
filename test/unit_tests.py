@@ -32,6 +32,12 @@ class TestBuildSystem(unittest.TestCase):
         self.assertTrue(os.path.exists(exe))
         subprocess.call(exe)
 
+    def test_03(self):
+        build_dir = _build("03")
+        # exe = os.path.join(build_dir, "test02")
+        # self.assertTrue(os.path.exists(exe))
+        # subprocess.call(exe)
+
 
 if __name__ == '__main__':
     unittest.main()
